@@ -5,15 +5,16 @@ const Details = (props) => {
     const [visible, setVisible] = useState(false)
     const{id}= props
     const [datas, setDatas] = useState([])
-    const [alert, showalert] = useState([])
+    
     useEffect(() => {
       // storing input name
       localStorage.setItem("name", JSON.stringify(name));
     }, [name]);
     useEffect(() => {
         fetchUsers();
+          // eslint-disable-next-line
     }, [id]);
-    
+  
     const fetchUsers = async () => {
         const res = await fetch(`https://api.tvmaze.com/shows/${props.id}`);
         const data = await res.json();
